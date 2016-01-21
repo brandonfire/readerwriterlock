@@ -1,0 +1,24 @@
+A reader writer lock:
+Only one writer is allowed to write at a time.
+Concurrent readers are allowed.
+when there is a reader, no writer is allowed. vice versa.
+no starving writer.
+
+Based on the starving version on the book. we added a condition variable to tell the readers writer join in and hold the readers. once there is no writers, broadcast readers to wake up.
+
+rwlock.c: reader writer lock with main test function
+rwlock_test.c: series test of reader writer lock
+
+Simply type "> ./make" to complie.
+
+to make a series test, type ./rwlock_test
+
+series test will test different number of reader and writers join in
+
+to make a single test, type ./rwlock [1streaders] [writers] [2ndreaders]
+
+Arguments:
+
+1streaders: how many readers created at first
+writer: how many writers created after frist readers
+2ndreader: how many readers created after writers
